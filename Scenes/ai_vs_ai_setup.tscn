@@ -1,0 +1,167 @@
+[gd_scene load_steps=4 format=3 uid="uid://c8x2fn4h6poj2"]
+
+[ext_resource type="Script" path="res://Scenes/ai_vs_ai_setup.gd" id="1_ai_setup"]
+[ext_resource type="Texture2D" uid="uid://b15fvflug2ccp" path="res://Graphics/blue_land.png" id="2_background"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button"]
+bg_color = Color(0.2, 0.4, 0.8, 0.8)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
+bg_color = Color(0.1, 0.1, 0.1, 0.8)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="AIvsAISetup" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("1_ai_setup")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(640, 360)
+scale = Vector2(1.25, 0.7)
+texture = ExtResource("2_background")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -200.0
+offset_right = 300.0
+offset_bottom = 200.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = -20.0
+
+[node name="Title" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "AI vs AI Setup"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Description" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Set the difficulty for each AI player:"
+horizontal_alignment = 1
+
+[node name="HSeparator2" type="HSeparator" parent="Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="AI1Container" type="VBoxContainer" parent="Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="AI1Label" type="Label" parent="Panel/VBoxContainer/AI1Container"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Player 1 AI (Left)"
+horizontal_alignment = 1
+
+[node name="AI1SliderContainer" type="HBoxContainer" parent="Panel/VBoxContainer/AI1Container"]
+layout_mode = 2
+
+[node name="AI1DifficultyLabel" type="Label" parent="Panel/VBoxContainer/AI1Container/AI1SliderContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Difficulty:"
+
+[node name="AI1Slider" type="HSlider" parent="Panel/VBoxContainer/AI1Container/AI1SliderContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.01
+value = 0.5
+
+[node name="AI1PercentLabel" type="Label" parent="Panel/VBoxContainer/AI1Container/AI1SliderContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "50%"
+
+[node name="HSeparator3" type="HSeparator" parent="Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="AI2Container" type="VBoxContainer" parent="Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="AI2Label" type="Label" parent="Panel/VBoxContainer/AI2Container"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Player 2 AI (Right)"
+horizontal_alignment = 1
+
+[node name="AI2SliderContainer" type="HBoxContainer" parent="Panel/VBoxContainer/AI2Container"]
+layout_mode = 2
+
+[node name="AI2DifficultyLabel" type="Label" parent="Panel/VBoxContainer/AI2Container/AI2SliderContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Difficulty:"
+
+[node name="AI2Slider" type="HSlider" parent="Panel/VBoxContainer/AI2Container/AI2SliderContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.01
+value = 0.5
+
+[node name="AI2PercentLabel" type="Label" parent="Panel/VBoxContainer/AI2Container/AI2SliderContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "50%"
+
+[node name="HSeparator4" type="HSeparator" parent="Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="ButtonContainer" type="HBoxContainer" parent="Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="BackButton" type="Button" parent="Panel/VBoxContainer/ButtonContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_button")
+text = "Back"
+
+[node name="StartButton" type="Button" parent="Panel/VBoxContainer/ButtonContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_button")
+text = "Start AI vs AI"
+
+[connection signal="value_changed" from="Panel/VBoxContainer/AI1Container/AI1SliderContainer/AI1Slider" to="." method="_on_ai_1_slider_value_changed"]
+[connection signal="value_changed" from="Panel/VBoxContainer/AI2Container/AI2SliderContainer/AI2Slider" to="." method="_on_ai_2_slider_value_changed"]
+[connection signal="pressed" from="Panel/VBoxContainer/ButtonContainer/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/ButtonContainer/StartButton" to="." method="_on_start_button_pressed"]

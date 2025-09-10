@@ -1,0 +1,282 @@
+[gd_scene load_steps=9 format=3 uid="uid://c43kg227ox11t"]
+
+[ext_resource type="Script" uid="uid://bjyrc5e21krao" path="res://Scenes/settings.gd" id="1_4geyq"]
+[ext_resource type="Texture2D" uid="uid://b15fvflug2ccp" path="res://Graphics/blue_land.png" id="2_i44u3"]
+
+[sub_resource type="FontVariation" id="FontVariation_lhmql"]
+
+[sub_resource type="FontVariation" id="FontVariation_aaqfp"]
+
+[sub_resource type="FontVariation" id="FontVariation_j2dne"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hover"]
+bg_color = Color(0.3, 0.5, 0.9, 0.9)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pressed"]
+bg_color = Color(0.1, 0.3, 0.7, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_normal"]
+bg_color = Color(0.2, 0.4, 0.8, 0.8)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="Settings" type="Node2D"]
+script = ExtResource("1_4geyq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(643.5, 361)
+scale = Vector2(1.25293, 0.708984)
+texture = ExtResource("2_i44u3")
+
+[node name="CheckButton" type="CheckButton" parent="."]
+offset_left = 290.0
+offset_top = 118.0
+offset_right = 334.0
+offset_bottom = 142.0
+
+[node name="Settings tab name" type="Label" parent="."]
+offset_left = 500.0
+offset_top = -1.0
+offset_right = 810.0
+offset_bottom = 109.0
+theme_override_fonts/font = SubResource("FontVariation_lhmql")
+theme_override_font_sizes/font_size = 80
+text = "Settings"
+
+[node name="bg music" type="Label" parent="."]
+offset_left = 40.0
+offset_top = 110.0
+offset_right = 272.0
+offset_bottom = 146.0
+theme_override_colors/font_color = Color(0.385493, 0.385492, 0.385492, 1)
+theme_override_fonts/font = SubResource("FontVariation_aaqfp")
+theme_override_font_sizes/font_size = 26
+text = "Background Music"
+metadata/_edit_group_ = true
+
+[node name="AiDifficulty" type="Label" parent="."]
+offset_left = 40.0
+offset_top = 418.0
+offset_right = 272.0
+offset_bottom = 454.0
+theme_override_colors/font_color = Color(0.385493, 0.385492, 0.385492, 1)
+theme_override_fonts/font = SubResource("FontVariation_aaqfp")
+theme_override_font_sizes/font_size = 26
+text = "Ai Defficulty Level"
+metadata/_edit_group_ = true
+
+[node name="HSlider" type="HSlider" parent="."]
+offset_left = 290.0
+offset_top = 176.0
+offset_right = 519.0
+offset_bottom = 204.0
+max_value = 1.0
+step = 0.01
+value = 0.5
+
+[node name="AiDifficultiHSlider" type="HSlider" parent="."]
+offset_left = 290.0
+offset_top = 422.0
+offset_right = 519.0
+offset_bottom = 450.0
+max_value = 1.0
+step = 0.01
+value = 0.5
+
+[node name="MusicVolumePercent" type="Label" parent="."]
+offset_left = 530.0
+offset_top = 170.0
+offset_right = 600.0
+offset_bottom = 209.0
+theme_override_colors/font_color = Color(0.385493, 0.385492, 0.385492, 1)
+theme_override_font_sizes/font_size = 24
+text = "50%"
+horizontal_alignment = 1
+
+[node name="AiDifficultyPercent" type="Label" parent="."]
+offset_left = 530.0
+offset_top = 420.0
+offset_right = 600.0
+offset_bottom = 459.0
+theme_override_colors/font_color = Color(0.385493, 0.385492, 0.385492, 1)
+theme_override_font_sizes/font_size = 24
+text = "50%"
+horizontal_alignment = 1
+
+[node name="HSlider2" type="HSlider" parent="."]
+offset_left = 290.0
+offset_top = 300.0
+offset_right = 519.0
+offset_bottom = 328.0
+max_value = 1.0
+step = 0.01
+value = 0.5
+
+[node name="BallSpeedPercent" type="Label" parent="."]
+offset_left = 530.0
+offset_top = 294.0
+offset_right = 600.0
+offset_bottom = 333.0
+theme_override_colors/font_color = Color(0.385493, 0.385492, 0.385492, 1)
+theme_override_font_sizes/font_size = 24
+text = "100%"
+horizontal_alignment = 1
+
+[node name="HSlider3" type="HSlider" parent="."]
+offset_left = 290.0
+offset_top = 238.0
+offset_right = 519.0
+offset_bottom = 266.0
+max_value = 1.0
+step = 0.01
+value = 0.5
+
+[node name="SFXVolumePercent" type="Label" parent="."]
+offset_left = 530.0
+offset_top = 232.0
+offset_right = 600.0
+offset_bottom = 271.0
+theme_override_colors/font_color = Color(0.385493, 0.385492, 0.385492, 1)
+theme_override_font_sizes/font_size = 24
+text = "50%"
+horizontal_alignment = 1
+
+[node name="HSlider4" type="HSlider" parent="."]
+offset_left = 290.0
+offset_top = 362.0
+offset_right = 519.0
+offset_bottom = 390.0
+max_value = 1.0
+step = 0.01
+value = 0.5
+
+[node name="GravityPercent" type="Label" parent="."]
+offset_left = 530.0
+offset_top = 356.0
+offset_right = 600.0
+offset_bottom = 395.0
+theme_override_colors/font_color = Color(0.385493, 0.385492, 0.385492, 1)
+theme_override_font_sizes/font_size = 24
+text = "50%"
+horizontal_alignment = 1
+
+[node name="Music Volume" type="Label" parent="."]
+offset_left = 40.0
+offset_top = 170.0
+offset_right = 229.0
+offset_bottom = 209.0
+theme_override_colors/font_color = Color(0.385493, 0.385492, 0.385492, 1)
+theme_override_fonts/font = SubResource("FontVariation_j2dne")
+theme_override_font_sizes/font_size = 28
+text = "Music Volume"
+
+[node name="Ball speed" type="Label" parent="."]
+offset_left = 40.0
+offset_top = 294.0
+offset_right = 229.0
+offset_bottom = 333.0
+theme_override_colors/font_color = Color(0.385493, 0.385492, 0.385492, 1)
+theme_override_fonts/font = SubResource("FontVariation_j2dne")
+theme_override_font_sizes/font_size = 28
+text = "Ball speed"
+
+[node name="SFX Volume" type="Label" parent="."]
+offset_left = 40.0
+offset_top = 232.0
+offset_right = 229.0
+offset_bottom = 271.0
+theme_override_colors/font_color = Color(0.385493, 0.385492, 0.385492, 1)
+theme_override_fonts/font = SubResource("FontVariation_j2dne")
+theme_override_font_sizes/font_size = 28
+text = "SFX Volume"
+
+[node name="Gravitty" type="Label" parent="."]
+offset_left = 40.0
+offset_top = 356.0
+offset_right = 229.0
+offset_bottom = 395.0
+theme_override_colors/font_color = Color(0.385493, 0.385492, 0.385492, 1)
+theme_override_fonts/font = SubResource("FontVariation_j2dne")
+theme_override_font_sizes/font_size = 28
+text = "Gravity"
+
+[node name="Button" type="Button" parent="."]
+offset_left = 940.0
+offset_top = 110.0
+offset_right = 1110.0
+offset_bottom = 160.0
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 24
+theme_override_styles/hover = SubResource("StyleBoxFlat_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_pressed")
+theme_override_styles/normal = SubResource("StyleBoxFlat_normal")
+text = "Full Screen"
+
+[node name="Button2" type="Button" parent="."]
+offset_left = 940.0
+offset_top = 203.0
+offset_right = 1110.0
+offset_bottom = 253.0
+theme_override_font_sizes/font_size = 24
+theme_override_styles/hover = SubResource("StyleBoxFlat_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_pressed")
+theme_override_styles/normal = SubResource("StyleBoxFlat_normal")
+text = "Controls"
+
+[node name="Button3" type="Button" parent="."]
+offset_left = 590.0
+offset_top = 660.0
+offset_right = 720.0
+offset_bottom = 700.0
+theme_override_font_sizes/font_size = 24
+theme_override_styles/hover = SubResource("StyleBoxFlat_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_pressed")
+theme_override_styles/normal = SubResource("StyleBoxFlat_normal")
+text = "Back"
+
+[node name="Button4" type="Button" parent="."]
+offset_left = 940.0
+offset_top = 296.0
+offset_right = 1110.0
+offset_bottom = 346.0
+theme_override_font_sizes/font_size = 24
+theme_override_styles/hover = SubResource("StyleBoxFlat_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_pressed")
+theme_override_styles/normal = SubResource("StyleBoxFlat_normal")
+text = "Graphics"
+
+[connection signal="toggled" from="CheckButton" to="." method="_on_check_button_toggled"]
+[connection signal="value_changed" from="HSlider" to="." method="_on_music_volume_changed"]
+[connection signal="value_changed" from="AiDifficultiHSlider" to="." method="_on_ai_difficulty_changed"]
+[connection signal="value_changed" from="HSlider2" to="." method="_on_ball_speed_changed"]
+[connection signal="value_changed" from="HSlider3" to="." method="_on_sfx_volume_changed"]
+[connection signal="value_changed" from="HSlider4" to="." method="_on_gravity_changed"]
+[connection signal="pressed" from="Button" to="." method="_on_fullscreen_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_controls_pressed"]
+[connection signal="pressed" from="Button3" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="Button4" to="." method="_on_graphics_pressed"]

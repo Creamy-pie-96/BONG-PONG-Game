@@ -1,0 +1,289 @@
+[gd_scene load_steps=4 format=3 uid="uid://bkkf4q8q6iqxo"]
+
+[ext_resource type="Script" path="res://Scenes/controls.gd" id="1_n5qx7"]
+[ext_resource type="Texture2D" uid="uid://b15fvflug2ccp" path="res://Graphics/blue_land.png" id="2_81u4r"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_control_button"]
+bg_color = Color(0.2, 0.4, 0.8, 0.8)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="Controls" type="Node2D"]
+script = ExtResource("1_n5qx7")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(643.5, 361)
+scale = Vector2(1.25293, 0.708984)
+texture = ExtResource("2_81u4r")
+
+[node name="Title" type="Label" parent="."]
+offset_left = 460.0
+offset_top = 20.0
+offset_right = 820.0
+offset_bottom = 100.0
+theme_override_font_sizes/font_size = 60
+text = "Controls"
+horizontal_alignment = 1
+
+[node name="PlayerLabels" type="VBoxContainer" parent="."]
+offset_left = 50.0
+offset_top = 120.0
+offset_right = 400.0
+offset_bottom = 600.0
+
+[node name="Player1Label" type="Label" parent="PlayerLabels"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Player 1"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="PlayerLabels"]
+layout_mode = 2
+
+[node name="Player1Controls" type="VBoxContainer" parent="PlayerLabels"]
+layout_mode = 2
+
+[node name="MoveUpP1" type="HBoxContainer" parent="PlayerLabels/Player1Controls"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PlayerLabels/Player1Controls/MoveUpP1"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "Move Up:"
+
+[node name="KeyButton" type="Button" parent="PlayerLabels/Player1Controls/MoveUpP1"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_control_button")
+text = "W"
+
+[node name="MoveDownP1" type="HBoxContainer" parent="PlayerLabels/Player1Controls"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PlayerLabels/Player1Controls/MoveDownP1"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "Move Down:"
+
+[node name="KeyButton" type="Button" parent="PlayerLabels/Player1Controls/MoveDownP1"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_control_button")
+text = "S"
+
+[node name="MoveLeftP1" type="HBoxContainer" parent="PlayerLabels/Player1Controls"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PlayerLabels/Player1Controls/MoveLeftP1"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "Move Left:"
+
+[node name="KeyButton" type="Button" parent="PlayerLabels/Player1Controls/MoveLeftP1"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_control_button")
+text = "A"
+
+[node name="MoveRightP1" type="HBoxContainer" parent="PlayerLabels/Player1Controls"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PlayerLabels/Player1Controls/MoveRightP1"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "Move Right:"
+
+[node name="KeyButton" type="Button" parent="PlayerLabels/Player1Controls/MoveRightP1"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_control_button")
+text = "D"
+
+[node name="RotateLeftP1" type="HBoxContainer" parent="PlayerLabels/Player1Controls"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PlayerLabels/Player1Controls/RotateLeftP1"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "Rotate Left:"
+
+[node name="KeyButton" type="Button" parent="PlayerLabels/Player1Controls/RotateLeftP1"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_control_button")
+text = "Q"
+
+[node name="RotateRightP1" type="HBoxContainer" parent="PlayerLabels/Player1Controls"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PlayerLabels/Player1Controls/RotateRightP1"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "Rotate Right:"
+
+[node name="KeyButton" type="Button" parent="PlayerLabels/Player1Controls/RotateRightP1"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_control_button")
+text = "E"
+
+[node name="Player2Labels" type="VBoxContainer" parent="."]
+offset_left = 650.0
+offset_top = 120.0
+offset_right = 1000.0
+offset_bottom = 600.0
+
+[node name="Player2Label" type="Label" parent="Player2Labels"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Player 2"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="Player2Labels"]
+layout_mode = 2
+
+[node name="Player2Controls" type="VBoxContainer" parent="Player2Labels"]
+layout_mode = 2
+
+[node name="MoveUpP2" type="HBoxContainer" parent="Player2Labels/Player2Controls"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Player2Labels/Player2Controls/MoveUpP2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "Move Up:"
+
+[node name="KeyButton" type="Button" parent="Player2Labels/Player2Controls/MoveUpP2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_control_button")
+text = "KP_8"
+
+[node name="MoveDownP2" type="HBoxContainer" parent="Player2Labels/Player2Controls"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Player2Labels/Player2Controls/MoveDownP2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "Move Down:"
+
+[node name="KeyButton" type="Button" parent="Player2Labels/Player2Controls/MoveDownP2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_control_button")
+text = "KP_2"
+
+[node name="MoveLeftP2" type="HBoxContainer" parent="Player2Labels/Player2Controls"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Player2Labels/Player2Controls/MoveLeftP2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "Move Left:"
+
+[node name="KeyButton" type="Button" parent="Player2Labels/Player2Controls/MoveLeftP2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_control_button")
+text = "KP_4"
+
+[node name="MoveRightP2" type="HBoxContainer" parent="Player2Labels/Player2Controls"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Player2Labels/Player2Controls/MoveRightP2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "Move Right:"
+
+[node name="KeyButton" type="Button" parent="Player2Labels/Player2Controls/MoveRightP2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_control_button")
+text = "KP_6"
+
+[node name="RotateLeftP2" type="HBoxContainer" parent="Player2Labels/Player2Controls"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Player2Labels/Player2Controls/RotateLeftP2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "Rotate Left:"
+
+[node name="KeyButton" type="Button" parent="Player2Labels/Player2Controls/RotateLeftP2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_control_button")
+text = "KP_7"
+
+[node name="RotateRightP2" type="HBoxContainer" parent="Player2Labels/Player2Controls"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Player2Labels/Player2Controls/RotateRightP2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "Rotate Right:"
+
+[node name="KeyButton" type="Button" parent="Player2Labels/Player2Controls/RotateRightP2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_control_button")
+text = "KP_9"
+
+[node name="BottomButtons" type="HBoxContainer" parent="."]
+offset_left = 400.0
+offset_top = 620.0
+offset_right = 880.0
+offset_bottom = 680.0
+
+[node name="ResetButton" type="Button" parent="BottomButtons"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_control_button")
+text = "Reset to Defaults"
+
+[node name="BackButton" type="Button" parent="BottomButtons"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_control_button")
+text = "Back"
+
+[node name="WaitingDialog" type="AcceptDialog" parent="."]
+initial_position = 2
+size = Vector2i(400, 200)
+title = "Press a Key"
+dialog_text = "Press any key to bind to this action.
+
+Press ESC to cancel."

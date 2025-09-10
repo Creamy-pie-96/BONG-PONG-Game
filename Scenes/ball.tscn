@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://b10fi4ikdltny"]
+
+[ext_resource type="Texture2D" uid="uid://c54m5pv2f4ebt" path="res://Graphics/alienBlue_round.png" id="1_d60mj"]
+[ext_resource type="Script" uid="uid://si6xj72is1jk" path="res://Scenes/ball.gd" id="2_ij5cq"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ij5cq"]
+friction = 0.1
+rough = true
+bounce = 1.0
+
+[sub_resource type="GDScript" id="GDScript_d60mj"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ij5cq"]
+radius = 17.1172
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_376qj"]
+radius = 17.1172
+
+[node name="Ball" type="RigidBody2D"]
+mass = 0.3
+physics_material_override = SubResource("PhysicsMaterial_ij5cq")
+script = ExtResource("2_ij5cq")
+
+[node name="Ball" type="Sprite2D" parent="."]
+position = Vector2(9.53674e-07, 3.57628e-07)
+scale = Vector2(0.514286, 0.485714)
+texture = ExtResource("1_d60mj")
+script = SubResource("GDScript_d60mj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ij5cq")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_376qj")
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,0 +1,146 @@
+[gd_scene load_steps=14 format=3 uid="uid://cvklw024bqn0l"]
+
+[ext_resource type="Texture2D" uid="uid://b15fvflug2ccp" path="res://Graphics/blue_land.png" id="1_4aqey"]
+[ext_resource type="PackedScene" uid="uid://dwj6knwjuurel" path="res://Scenes/player_1.tscn" id="2_xgxeb"]
+[ext_resource type="PackedScene" uid="uid://b10fi4ikdltny" path="res://Scenes/ball.tscn" id="3_ltlj5"]
+[ext_resource type="Script" uid="uid://b0hdfxsf4kl63" path="res://Scenes/background.gd" id="4_background"]
+[ext_resource type="AudioStream" uid="uid://bubcycxs2lh6i" path="res://Audio/background_music.wav" id="5_kopta"]
+[ext_resource type="AudioStream" uid="uid://dshagsmyjgkme" path="res://Audio/bouncy_ball.wav" id="6_wi0l6"]
+[ext_resource type="AudioStream" uid="uid://qtejdu1w0meq" path="res://Audio/score.wav" id="7_b4xn0"]
+[ext_resource type="AudioStream" uid="uid://cbs3tka3kopmp" path="res://Audio/button_pressed.wav" id="8_bdh0s"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xgxeb"]
+size = Vector2(28, 720)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ltlj5"]
+size = Vector2(1278, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rymcx"]
+size = Vector2(4, 759)
+
+[sub_resource type="FontVariation" id="FontVariation_4aqey"]
+
+[sub_resource type="FontVariation" id="FontVariation_xgxeb"]
+
+[node name="Background" type="Node2D"]
+script = ExtResource("4_background")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(642.999, 364)
+scale = Vector2(1.25, 0.703125)
+texture = ExtResource("1_4aqey")
+
+[node name="Player 1" parent="." instance=ExtResource("2_xgxeb")]
+position = Vector2(147, 357)
+speed = null
+rotation_speed = null
+rot_restore_speed = null
+max_rotation_deg = null
+min_rotation_deg = null
+mass = null
+
+[node name="Player 2" parent="." instance=ExtResource("2_xgxeb")]
+position = Vector2(1000, 354)
+rotation = 0.127409
+speed = null
+rotation_speed = null
+rot_restore_speed = null
+max_rotation_deg = 30.0
+min_rotation_deg = -30.0
+mass = null
+
+[node name="Borders" type="StaticBody2D" parent="."]
+position = Vector2(1208, 360)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders"]
+position = Vector2(89, 5)
+shape = SubResource("RectangleShape2D_xgxeb")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Borders"]
+position = Vector2(-1219, 3)
+shape = SubResource("RectangleShape2D_xgxeb")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Borders"]
+position = Vector2(-566, 374)
+shape = SubResource("RectangleShape2D_ltlj5")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Borders"]
+position = Vector2(-567, -366)
+shape = SubResource("RectangleShape2D_ltlj5")
+
+[node name="Ball" parent="." instance=ExtResource("3_ltlj5")]
+position = Vector2(593, 335)
+
+[node name="Goal area player 1 side" type="Area2D" parent="."]
+
+[node name="Goal area at player 1" type="CollisionShape2D" parent="Goal area player 1 side"]
+position = Vector2(5, 365)
+shape = SubResource("RectangleShape2D_rymcx")
+
+[node name="Goal area player 2 side" type="Area2D" parent="."]
+
+[node name="Goal area at player 2" type="CollisionShape2D" parent="Goal area player 2 side"]
+position = Vector2(1281, 371)
+shape = SubResource("RectangleShape2D_rymcx")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Player 1 point" type="Label" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.03
+anchor_top = 0.029
+anchor_right = 0.095
+anchor_bottom = 0.087
+offset_left = 1.6
+offset_top = 0.119999
+offset_right = 45.4
+offset_bottom = 28.36
+theme_override_colors/font_color = Color(0.385493, 0.385492, 0.385492, 1)
+theme_override_fonts/font = SubResource("FontVariation_4aqey")
+theme_override_font_sizes/font_size = 50
+
+[node name="Player 2 point" type="Label" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.03
+anchor_top = 0.029
+anchor_right = 0.095
+anchor_bottom = 0.087
+offset_left = 1081.6
+offset_top = 0.119999
+offset_right = 1130.4
+offset_bottom = 30.36
+theme_override_colors/font_color = Color(0.385493, 0.385492, 0.385492, 1)
+theme_override_fonts/font = SubResource("FontVariation_xgxeb")
+theme_override_font_sizes/font_size = 50
+horizontal_alignment = 2
+
+[node name="BackToMenuButton" type="Button" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.05
+anchor_right = 0.5
+anchor_bottom = 0.05
+offset_left = -75.0
+offset_top = -15.0
+offset_right = 75.0
+offset_bottom = 15.0
+theme_override_font_sizes/font_size = 16
+text = "Back to Menu"
+
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_kopta")
+volume_db = -5.0
+pitch_scale = 0.5
+
+[node name="BallSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_wi0l6")
+volume_db = 7.0
+
+[node name="Score" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_b4xn0")
+volume_db = 5.0
+
+[node name="Button" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_bdh0s")
+
+[connection signal="pressed" from="CanvasLayer/BackToMenuButton" to="." method="_on_back_to_menu_pressed"]
