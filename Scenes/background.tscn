@@ -31,23 +31,13 @@ scale = Vector2(1.25, 0.703125)
 texture = ExtResource("1_4aqey")
 
 [node name="Player 1" parent="." instance=ExtResource("2_xgxeb")]
-position = Vector2(147, 357)
-speed = null
-rotation_speed = null
-rot_restore_speed = null
-max_rotation_deg = null
-min_rotation_deg = null
-mass = null
+position = Vector2(202, 324)
 
 [node name="Player 2" parent="." instance=ExtResource("2_xgxeb")]
 position = Vector2(1000, 354)
 rotation = 0.127409
-speed = null
-rotation_speed = null
-rot_restore_speed = null
 max_rotation_deg = 30.0
 min_rotation_deg = -30.0
-mass = null
 
 [node name="Borders" type="StaticBody2D" parent="."]
 position = Vector2(1208, 360)

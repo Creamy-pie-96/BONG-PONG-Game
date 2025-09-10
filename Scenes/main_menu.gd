@@ -151,9 +151,10 @@ func _on_multi_player_pressed() -> void:
 	# Wait for button sound to play before transitioning
 	await get_tree().create_timer(0.3).timeout
 	
-	# Set multiplayer mode
+	# Set multiplayer mode and ensure AI vs AI is disabled
 	if has_node("/root/GameState"):
 		GameState.is_multiplayer = true
+		GameState.is_ai_vs_ai = false  # Explicitly disable AI vs AI mode
 		# Load AI difficulty from settings
 		if settings_scene_instance:
 			GameState.ai_difficulty = settings_scene_instance.ai_difficulty

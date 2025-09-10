@@ -18,6 +18,11 @@ var screen_height: float = 720.0
 var screen_center_x: float = 640.0
 var screen_center_y: float = 360.0
 
+# Player offset variables for positioning
+var player_x_offset: float = 60.0  # Distance from screen edge
+var player_1_default_x: float = 60.0
+var player_2_default_x: float = 1280-60
+
 # AI System Variables
 var is_ai_enabled: bool = false
 var is_ai_vs_ai: bool = false
@@ -54,13 +59,28 @@ func _ready() -> void:
 	screen_center_x = screen_width / 2.0
 	screen_center_y = screen_height / 2.0
 	
+	# Calculate dynamic player positions with offset
+	player_1_default_x = player_x_offset
+	player_2_default_x = screen_width - player_x_offset
+	
+	# Update player boundaries based on screen size with proper percentage restrictions
+	# Player 1 (left): 7.8% to 34% of screen width
+	Player1_min_x = screen_width * 0.038  # 3.8% from left edge
+	Player1_max_x = screen_width * 0.138   # 13.8% of screen width
+	
+	# Player 2 (right): 66% to 92.2% of screen width  
+	Player2_min_x = screen_width * 0.862   # 86% of screen width
+	Player2_max_x = screen_width * 0.962  # 96.2% from left edge (3.8% from right edge)
+	
 	# Initialize AI targets with dynamic values
 	ai_target_y = screen_center_y
 	ai_1_target_y = screen_center_y
+	ai_target_x = player_2_default_x
+	ai_1_target_x = player_1_default_x
 	
-	# Initial positions
-	$"../Player 2".position = Vector2(1208.0, screen_center_y)
-	$"../Player 1".position = Vector2(72.0, screen_center_y)
+	# Set initial positions dynamically
+	$"../Player 2".position = Vector2(player_2_default_x, screen_center_y)
+	$"../Player 1".position = Vector2(player_1_default_x, screen_center_y)
 	$"../Player 2".rotation = 0.0
 	$"../Player 1".rotation = 0.0
 	
@@ -107,10 +127,6 @@ func update_ai_1_parameters():
 		print("Player 1 AI Parameters - Precision: ", ai_1_precision, " Reaction: ", ai_1_reaction_time, " Prediction: ", ai_1_prediction_accuracy)
 
 func _process(delta: float) -> void:
-	# Convert degrees to radians for clamping
-	var max_rotation = deg_to_rad(max_rotation_deg)
-	var min_rotation = deg_to_rad(min_rotation_deg)
-
 	# Handle different game modes
 	if is_ai_vs_ai:
 		# AI vs AI mode - both players are controlled by AI
@@ -174,8 +190,7 @@ func handle_ai_player_1(delta: float):
 	var ball_pos = ball_node.position
 	var ball_vel = ball_node.linear_velocity
 	
-	# Calculate relative distance and approach direction for Player 1 (left side)
-	var distance_to_ball_x = abs(ball_pos.x - player_p1.position.x)
+	# Calculate approach direction for Player 1 (left side)
 	var ball_approaching = ball_vel.x < 0  # Ball moving toward Player 1 (left side)
 	var ball_past_center = ball_pos.x < screen_center_x  # Ball past center line toward Player 1
 	
@@ -248,8 +263,7 @@ func handle_ai_player_2(delta: float):
 	var ball_pos = ball_node.position
 	var ball_vel = ball_node.linear_velocity
 	
-	# Calculate relative distance and approach direction for Player 2 (right side)
-	var distance_to_ball_x = abs(ball_pos.x - player_p2.position.x)
+	# Calculate approach direction for Player 2 (right side)
 	var ball_approaching = ball_vel.x > 0  # Ball moving toward Player 2 (right side)
 	var ball_past_center = ball_pos.x > screen_center_x  # Ball past center line toward Player 2
 	

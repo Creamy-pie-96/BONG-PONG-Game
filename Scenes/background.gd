@@ -3,6 +3,9 @@ extends Node2D
 const MAIN_MENU_SCENE = "res://Scenes/main_menu.tscn"
 
 func _ready():
+	# Set up dynamic positioning for all game elements
+	setup_dynamic_positioning()
+	
 	# Load settings from config file and apply proper volumes
 	load_and_apply_settings()
 	
@@ -17,6 +20,72 @@ func _ready():
 	
 	# Make sure the back button is visible
 	$CanvasLayer/BackToMenuButton.visible = true
+	
+	# Connect to window resize signal for dynamic repositioning
+	get_viewport().size_changed.connect(_on_window_resized)
+
+func _on_window_resized():
+	"""Handle window resize by repositioning all elements"""
+	setup_dynamic_positioning()
+
+func setup_dynamic_positioning():
+	"""Set up all game elements to scale with window size"""
+	var viewport = get_viewport()
+	var screen_size = viewport.get_visible_rect().size
+	var screen_center_x = screen_size.x / 2
+	var screen_center_y = screen_size.y / 2
+	
+	# Player positioning
+	var player_x_offset = screen_size.x * 0.15  # 15% from edges
+	$"Player 1".position = Vector2(player_x_offset, screen_center_y)
+	$"Player 2".position = Vector2(screen_size.x - player_x_offset, screen_center_y)
+	
+	# Background sprite positioning and scaling
+	$Sprite2D.position = Vector2(screen_center_x, screen_center_y)
+	# Scale background to fit screen
+	var background_scale_x = screen_size.x / $Sprite2D.texture.get_width()
+	var background_scale_y = screen_size.y / $Sprite2D.texture.get_height()
+	$Sprite2D.scale = Vector2(background_scale_x, background_scale_y)
+	
+	# Ball positioning
+	$Ball.position = Vector2(screen_center_x, screen_center_y)
+	
+	# Border positioning (walls and ceiling/floor)
+	var border_thickness = 28
+	var border_length = screen_size.y + 40  # Extra height for safety
+	var wall_length = screen_size.x + 40   # Extra width for safety
+	
+	# Update border positions
+	$Borders.position = Vector2(0, 0)  # Reset border container position
+	
+	# Right wall
+	$Borders/CollisionShape2D.position = Vector2(screen_size.x + border_thickness/2, screen_center_y)
+	$Borders/CollisionShape2D.shape.size = Vector2(border_thickness, border_length)
+	
+	# Left wall
+	$Borders/CollisionShape2D2.position = Vector2(-border_thickness/2, screen_center_y)
+	$Borders/CollisionShape2D2.shape.size = Vector2(border_thickness, border_length)
+	
+	# Top wall
+	$Borders/CollisionShape2D3.position = Vector2(screen_center_x, -20)
+	$Borders/CollisionShape2D3.shape.size = Vector2(wall_length, 20)
+	
+	# Bottom wall
+	$Borders/CollisionShape2D4.position = Vector2(screen_center_x, screen_size.y + 20)
+	$Borders/CollisionShape2D4.shape.size = Vector2(wall_length, 20)
+	
+	# Goal areas - positioned 20px before window borders
+	var goal_width = 4
+	var goal_height = screen_size.y + 40
+	var goal_offset = 5  # 20px before window border
+	
+	# Left goal (Player 1 side) - 20px before left border
+	$"Goal area player 1 side/Goal area at player 1".position = Vector2(goal_offset, screen_center_y)
+	$"Goal area player 1 side/Goal area at player 1".shape.size = Vector2(goal_width, goal_height)
+	
+	# Right goal (Player 2 side) - 20px before right border
+	$"Goal area player 2 side/Goal area at player 2".position = Vector2(screen_size.x - goal_offset, screen_center_y)
+	$"Goal area player 2 side/Goal area at player 2"	.shape.size = Vector2(goal_width, goal_height)
 
 func load_custom_controls():
 	"""Load and apply custom control bindings from config file"""

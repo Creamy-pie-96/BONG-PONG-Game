@@ -14,7 +14,11 @@ func _ready() -> void:
 	# Load settings and apply them
 	load_and_apply_settings()
 	
-	position = Vector2(640, 360)
+	# Get dynamic screen center
+	var viewport = get_viewport()
+	var screen_center = Vector2(viewport.get_visible_rect().size.x / 2.0, viewport.get_visible_rect().size.y / 2.0)
+	position = screen_center
+	
 	linear_damp = 0.08
 	angular_damp = 0.0
 	
@@ -163,13 +167,18 @@ func _on_timer_timeout() -> void:
 	print("Ball launched towards: ", "right" if is_right_side else "left")
 
 func _reset_player() -> void:
-	$"../Player 2".rotation = 0.0
-	#for player 1
-	$"../Player 1".position = Vector2(72.0, 360.0)
+	# Get dynamic positions
+	var viewport = get_viewport()
+	var screen_width = viewport.get_visible_rect().size.x
+	var screen_center_y = viewport.get_visible_rect().size.y / 2.0
+	var player_x_offset = 72.0
+	
+	# Reset Player 1 (left side)
+	$"../Player 1".position = Vector2(player_x_offset, screen_center_y)
 	$"../Player 1".rotation = 0.0
 	$"../Player 1".velocity = Vector2.ZERO
 	
-	#for player 2
-	$"../Player 2".position = Vector2(1208.0, 360.0)
+	# Reset Player 2 (right side)
+	$"../Player 2".position = Vector2(screen_width - player_x_offset, screen_center_y)
 	$"../Player 2".rotation = 0.0
 	$"../Player 2".velocity = Vector2.ZERO
