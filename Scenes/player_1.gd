@@ -415,10 +415,10 @@ func calculate_optimal_return_angle(ball_pos: Vector2, _ball_vel: Vector2) -> fl
 	var target_area_y: float
 	
 	# Target the area farthest from Player 1
-	if player1_pos.y < 360:
-		target_area_y = 500  # Aim low if Player 1 is high
+	if player1_pos.y < screen_center_y:
+		target_area_y = screen_center_y + 140  # Aim low if Player 1 is high
 	else:
-		target_area_y = 220  # Aim high if Player 1 is low
+		target_area_y = screen_center_y - 140  # Aim high if Player 1 is low
 	
 	# Calculate angle needed to reach target area
 	var angle_factor = (target_area_y - ball_pos.y) / 200.0
@@ -482,9 +482,9 @@ func calculate_ai_1_target_y(ball_pos: Vector2, ball_vel: Vector2, _ball_approac
 		
 		"REPOSITIONING":
 			if ai_1_precision > 0.6:
-				target_y = 360.0 + randf_range(-50, 50)
+				target_y = screen_center_y + randf_range(-50, 50)
 			else:
-				target_y = 360.0
+				target_y = screen_center_y
 	
 	return target_y
 
@@ -546,10 +546,10 @@ func calculate_optimal_return_angle_p1(ball_pos: Vector2, _ball_vel: Vector2) ->
 	var target_area_y: float
 	
 	# Target the area farthest from Player 2
-	if player2_pos.y < 360:
-		target_area_y = 500  # Aim low if Player 2 is high
+	if player2_pos.y < screen_center_y:
+		target_area_y = screen_center_y + 140  # Aim low if Player 2 is high
 	else:
-		target_area_y = 220  # Aim high if Player 2 is low
+		target_area_y = screen_center_y - 140  # Aim high if Player 2 is low
 	
 	var angle_factor = (target_area_y - ball_pos.y) / 200.0
 	return clamp(angle_factor, -0.4, 0.4)
