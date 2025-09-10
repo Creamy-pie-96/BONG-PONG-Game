@@ -68,6 +68,10 @@ func play_button_sound():
 	"""Play button click sound if available"""
 	if button_sound and button_sound.stream:
 		button_sound.play()
+	else :
+		$ButtonSound.play()
+		# Wait for button sound to play before transitioning
+		await get_tree().create_timer(0.3).timeout
 
 func connect_button_signals():
 	"""Connect all the key binding buttons to their respective handlers"""

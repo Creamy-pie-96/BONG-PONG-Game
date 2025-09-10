@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bkkf4q8q6iqxo"]
+[gd_scene load_steps=5 format=3 uid="uid://bkkf4q8q6iqxo"]
 
-[ext_resource type="Script" path="res://Scenes/controls.gd" id="1_n5qx7"]
+[ext_resource type="Script" uid="uid://duxeubmb66318" path="res://Scenes/controls.gd" id="1_n5qx7"]
 [ext_resource type="Texture2D" uid="uid://b15fvflug2ccp" path="res://Graphics/blue_land.png" id="2_81u4r"]
+[ext_resource type="AudioStream" uid="uid://cbs3tka3kopmp" path="res://Audio/button_pressed.wav" id="3_ejwpf"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_control_button"]
 bg_color = Color(0.2, 0.4, 0.8, 0.8)
@@ -281,9 +282,12 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_control_button")
 text = "Back"
 
 [node name="WaitingDialog" type="AcceptDialog" parent="."]
+title = "Press a Key"
 initial_position = 2
 size = Vector2i(400, 200)
-title = "Press a Key"
 dialog_text = "Press any key to bind to this action.
 
 Press ESC to cancel."
+
+[node name="ButtonSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_ejwpf")

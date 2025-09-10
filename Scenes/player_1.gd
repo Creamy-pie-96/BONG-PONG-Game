@@ -18,6 +18,11 @@ var screen_height: float = 720.0
 var screen_center_x: float = 640.0
 var screen_center_y: float = 360.0
 
+
+# Y-axis boundaries for both players (same boundaries)
+var Player_min_y: float = 76.0
+var Player_max_y: float = 1280 - 76.0
+
 # Player offset variables for positioning
 var player_x_offset: float = 60.0  # Distance from screen edge
 var player_1_default_x: float = 60.0
@@ -71,6 +76,10 @@ func _ready() -> void:
 	# Player 2 (right): 66% to 92.2% of screen width  
 	Player2_min_x = screen_width * 0.862   # 86% of screen width
 	Player2_max_x = screen_width * 0.962  # 96.2% from left edge (3.8% from right edge)
+	
+	# Y-axis boundaries for both players (consistent with AI boundaries)
+	Player_min_y = 76.0  # 60px from top
+	Player_max_y = screen_height - 76.0  # 60px from bottom
 	
 	# Initialize AI targets with dynamic values
 	ai_target_y = screen_center_y
@@ -168,6 +177,7 @@ func handle_human_player_1(delta: float):
 	$"../Player 1".velocity = dir_p1 * speed
 	$"../Player 1".move_and_slide()
 	$"../Player 1".position.x = clamp($"../Player 1".position.x, Player1_min_x, Player1_max_x)
+	$"../Player 1".position.y = clamp($"../Player 1".position.y, Player_min_y, Player_max_y)
 
 	if is_rotating_p1:
 		$"../Player 1".rotation += rot_p1 * rotation_speed * delta
@@ -246,6 +256,7 @@ func handle_ai_player_1(delta: float):
 	player_p1.velocity = p1_dir * speed * p1_movement_speed
 	player_p1.move_and_slide()
 	player_p1.position.x = clamp(player_p1.position.x, Player1_min_x, Player1_max_x)
+	player_p1.position.y = clamp(player_p1.position.y, Player_min_y, Player_max_y)
 	
 	# AI rotation logic for Player 1
 	handle_ai_1_rotation(player_p1, ball_pos, ball_vel, ball_approaching, delta, p1_min_rotation, p1_max_rotation)
@@ -319,6 +330,7 @@ func handle_ai_player_2(delta: float):
 	player_p2.velocity = p2_dir * speed * p2_movement_speed
 	player_p2.move_and_slide()
 	player_p2.position.x = clamp(player_p2.position.x, Player2_min_x, Player2_max_x)
+	player_p2.position.y = clamp(player_p2.position.y, Player_min_y, Player_max_y)
 	
 	# AI rotation logic - strategic angling
 	handle_ai_rotation(player_p2, ball_pos, ball_vel, ball_approaching, delta, p2_min_rotation, p2_max_rotation)
@@ -460,6 +472,7 @@ func handle_human_player_2(delta: float):
 	$"../Player 2".velocity = dir_p2 * speed
 	$"../Player 2".move_and_slide()
 	$"../Player 2".position.x = clamp($"../Player 2".position.x, Player2_min_x, Player2_max_x)
+	$"../Player 2".position.y = clamp($"../Player 2".position.y, Player_min_y, Player_max_y)
 
 	if is_rotating_p2:
 		$"../Player 2".rotation += rot_p2 * rotation_speed * delta

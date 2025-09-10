@@ -117,6 +117,9 @@ func _on_ai_difficulty_changed(value: float):
 	save_setting()
 
 func _on_fullscreen_pressed():
+	$ButtonSound.play()
+	# Wait for button sound to play before transitioning
+	await get_tree().create_timer(0.3).timeout
 	var mode = DisplayServer.window_get_mode()
 	if mode == DisplayServer.WINDOW_MODE_FULLSCREEN:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
@@ -124,6 +127,9 @@ func _on_fullscreen_pressed():
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 
 func _on_controls_pressed():
+	$ButtonSound.play()
+	# Wait for button sound to play before transitioning
+	await get_tree().create_timer(0.3).timeout
 	# Load the controls scene
 	var controls_scene = preload("res://Scenes/controls.tscn")
 	var controls_instance = controls_scene.instantiate()
@@ -134,6 +140,9 @@ func _on_controls_pressed():
 	hide()
 
 func _on_graphics_pressed():
+	$ButtonSound.play()
+	# Wait for button sound to play before transitioning
+	await get_tree().create_timer(0.3).timeout
 	var dialog = AcceptDialog.new()
 	dialog.title = "Graphics Settings"
 	dialog.dialog_text = "Graphics settings coming soon!\n\nCurrent resolution: " + str(DisplayServer.window_get_size())
@@ -141,6 +150,9 @@ func _on_graphics_pressed():
 	dialog.popup_centered()
 
 func _on_back_pressed():
+	$ButtonSound.play()
+	# Wait for button sound to play before transitioning
+	await get_tree().create_timer(0.3).timeout
 	hide()  # Hide the settings panel
 
 func save_setting():

@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://c43kg227ox11t"]
+[gd_scene load_steps=10 format=3 uid="uid://c43kg227ox11t"]
 
 [ext_resource type="Script" uid="uid://bjyrc5e21krao" path="res://Scenes/settings.gd" id="1_4geyq"]
 [ext_resource type="Texture2D" uid="uid://b15fvflug2ccp" path="res://Graphics/blue_land.png" id="2_i44u3"]
+[ext_resource type="AudioStream" uid="uid://cbs3tka3kopmp" path="res://Audio/button_pressed.wav" id="3_lhmql"]
 
 [sub_resource type="FontVariation" id="FontVariation_lhmql"]
 
@@ -269,6 +270,9 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_hover")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_pressed")
 theme_override_styles/normal = SubResource("StyleBoxFlat_normal")
 text = "Graphics"
+
+[node name="ButtonSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_lhmql")
 
 [connection signal="toggled" from="CheckButton" to="." method="_on_check_button_toggled"]
 [connection signal="value_changed" from="HSlider" to="." method="_on_music_volume_changed"]
