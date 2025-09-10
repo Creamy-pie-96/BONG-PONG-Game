@@ -54,6 +54,10 @@ func _ready() -> void:
 	screen_center_x = screen_width / 2.0
 	screen_center_y = screen_height / 2.0
 	
+	# Initialize AI targets with dynamic values
+	ai_target_y = screen_center_y
+	ai_1_target_y = screen_center_y
+	
 	# Initial positions
 	$"../Player 2".position = Vector2(1208.0, screen_center_y)
 	$"../Player 1".position = Vector2(72.0, screen_center_y)
